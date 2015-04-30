@@ -1,0 +1,37 @@
+<h1>Listing blogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Date</th>
+      <th>Image url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td class="list_content">
+  	  <dl>
+            <dt><%= blog.title %></dt>
+	  </dl>
+        </td>
+ 	<td><dl><dd><%= truncate(strip_tags(blog.content), length:120) %></dd></dl></td>
+	<td><dl><dt><%= blog.date %></dt></dl></td>
+        <td><%= image_tag(blog.image_url, class: 'list_image') %></td>
+        <td class="list_actions">
+	   <%= link_to 'Show', blog %><br/>
+           <%= link_to 'Edit', edit_blog_path(blog) %><br/>
+           <%= link_to 'Destroy', blog, method: :delete, data:  {confirm: 'Are you sure?'} %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blog', new_blog_path %>
