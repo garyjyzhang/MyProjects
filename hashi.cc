@@ -28,7 +28,7 @@ struct island{
 		vector<int> state;
 		vector<vector<int> >* possib;
 		Neighbor neighbor;
-		island() {                //<--needs change
+		island() {            
 				number = 0;
 				state = zero[0];
 				isOccupied = false;
@@ -255,14 +255,7 @@ void addPossib(vector<vector<int> >*v, int x, int y, int z, int p){
 		a[0] = x; a[1] = y; a[2] = z; a[3] = p;
 		v->push_back(a);
 }
-/*void printPossib(vector<vector<int> >& v){
-		for (int i=0; i<v.size(); i++){
-				for (int j = 0; j<4; j++){
-						cout << v[i][j] << " ";
-				}
-				cout << " ";
-		}
-}*/
+
 
 void calculatePossib(int num){
 		vector<vector<int> >* v;
